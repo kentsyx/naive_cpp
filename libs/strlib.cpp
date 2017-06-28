@@ -5,15 +5,21 @@
 
 #include <string>
 #include <cctype>
+#include <sstream>
+#include <iomanip>
+#include "error.h"
 
 using std::string;
 using std::isalpha;
 using std::tolower;
 using std::toupper;
+using std::istringstream;
+using std::ostringstream;
+using std::ws;
 
 typedef string::size_type size_type;
 
-int countSpaces(string str) {
+int countSpaces(const string str) {
     int nSpaces = 0;
     for (size_type i = 0; i != str.length(); ++i) {
         if (str[i] == ' ')
@@ -22,7 +28,7 @@ int countSpaces(string str) {
     return nSpaces;
 }
 
-bool startsWith(string str, string prefix) {
+bool startsWith(const string str, const string prefix) {
     if (str.length() < prefix.length())
         return false;
     for (size_type i = 0; i != prefix.length(); ++i) {
@@ -32,8 +38,14 @@ bool startsWith(string str, string prefix) {
     return true;
 }
 
-bool endsWith(string str, string suffix) {
-    ;
+bool endsWith(const string str, const string suffix) {
+    if (str.length() < suffix.length())
+        return false;
+    for (size_type i = suffix.length() - 1; i != 0; --i) {
+        if (str[i + str.length() - suffix.length()] != suffix[i])
+            return false;
+    }
+    return true;
 }
 
 string repeatChar(char ch, int n) {
@@ -50,7 +62,7 @@ string reverse(string str) {
     return result;
 }
 
-bool isDigitString(string str) {
+bool isDigitString(const string str) {
     if (str.length() == 0)
         return false;
     for (size_type i = 0; i != str.length(); ++i)
@@ -59,11 +71,11 @@ bool isDigitString(string str) {
     return true;
 }
 
-bool euqalsIgnoreCases(string s1, string s2) {
+bool euqalsIgnoreCases(const string s1, const string s2) {
     if (s1.length() != s2.length())
         return false;
     for (size_type i = 0; i != s1.length(); ++i) {
-        if (tolower(s1[i] != s2[i]))
+        if (tolower(s1[i]) != tolower(s2[i]))
             return false;
     }
     return true;
@@ -86,20 +98,24 @@ string toLowerCaseInPlace(string& str) {
     return str;
 }
 
-string tolowerCase(string str) {
+string toLowerCase(string str) {
     str = toLowerCaseInPlace(str);
     return str;
 }
 
-bool isPalindrome_bad(string str) {
+bool isPalindrome_bad(const string str) {
     return str == reverse(str);
 }
 
-bool isPalindrome_recur(string str) {
-    ;
+bool isPalindrome_recursive(const string str, int start, int end) {
+    if (start >= end)
+        return true;
+    if (str[start] != str[end])
+        return false;
+    return isPalindrome_recursive(str, 0, str.length() - 1);
 }
 
-bool isPalindrome(string str) {
+bool isPalindrome(const string str) {
     size_type n = str.length();
     for (size_type i = 0; i < n / 2; ++i)
         if (str[i] != str[n - i - 1])
@@ -107,26 +123,27 @@ bool isPalindrome(string str) {
     return true;
 }
 
+string trim(string str) {
+    int b_marker = 0;
+    while (str[b_marker] == ' ')
+        ++b_marker;
+    int e_marker = str.length() - 1;
+    while (str[e_marker] == ' ')
+        --e_marker;
+    return str.substr(b_marker, e_marker - b_marker + 1);
+}
 
+int stringToInteger(string str) {
+    istringstream stream(str);
+    int value;
+    stream >> value >> ws;
+    if (stream.fail() || !stream.eof())
+        error(" Illegal integer format. Please try again. ");
+    return value;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+string integerToString(int value) {
+    ostringstream stream;
+    stream << value;
+    return stream.str();
+}
