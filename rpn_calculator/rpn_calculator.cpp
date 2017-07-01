@@ -7,8 +7,9 @@
 #include <string>
 #include <cctype>
 #include <stack>
-#include "error.h"
-#include "strlib.h"
+#include "../libs/error.h"
+#include "../libs/strlib.h"
+#include "rpn_calculator.h"
 
 using std::istream;
 using std::ostream;
