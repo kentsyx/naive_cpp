@@ -6,7 +6,7 @@
 #include <queue>
 #include <iostream>
 #include <iomanip>
-#include "random.h"
+#include "../libs/random.h"
 #include "checkout_line.h"
 
 using std::queue;
