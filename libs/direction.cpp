@@ -3,9 +3,11 @@
  * This file implements the direction.h interface.
  */
 
+#include <iostream>
 #include <string>
 #include "direction.h"
 
+using std::ostream;
 using std::string;
 
 Direction leftFrom(Direction dir) {
@@ -24,4 +26,18 @@ string directionToString(Direction dir) {
     case WEST: return "WEST";
     default: return "???";
     }
+}
+
+ostream& operator <<(ostream& os, Direction dir) {
+    return os << directionToString(dir);
+}
+
+Direction operator ++(Direction dir) {
+    return Direction(dir + 1);
+}
+
+Direction operator ++(Direction dir, int dummy) {
+    Direction old = dir;
+    dir = Direction(dir + 1);
+    return old;
 }
