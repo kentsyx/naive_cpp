@@ -7,6 +7,9 @@
 
 #include <string>
 
+#ifndef EDITORBUFFER_ARRAY_H
+#define EDITORBUFFER_ARRAY_H
+
 class EditorBuffer {
 public:
     EditorBuffer();
@@ -35,8 +38,5 @@ private:
     int capacity;
     char *array;
 };
-
-#ifndef EDITORBUFFER_ARRAY_H
-#define EDITORBUFFER_ARRAY_H
 
 #endif // EDITORBUFFER_ARRAY_H
