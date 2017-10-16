@@ -46,7 +46,7 @@ void EditorBuffer::deleteCharacter() {
 }
 
 void EditorBuffer::insertCharacter(char ch) {
-    if (cursor == length)
+    if (length == capacity)
         expandCapacity();
     for (int i = length; i > cursor; i--)
         array[i] = array[i - 1];
