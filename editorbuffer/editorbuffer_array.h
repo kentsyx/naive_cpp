@@ -5,10 +5,11 @@
  * as a character array.
  */
 
-#include <string>
 
 #ifndef EDITORBUFFER_ARRAY_H
 #define EDITORBUFFER_ARRAY_H
+
+#include <string>
 
 class EditorBuffer {
 public:
@@ -27,16 +28,16 @@ public:
 
 private:
     static const int INITIAL_CAPACITY = 10;
+    char *array;
+    int capacity;
+    int length;
+    int cursor;
 
+    /* Make it illegal to copy the editor buffers */
     EditorBuffer(const EditorBuffer&);
-    const EditorBuffer& operator=(const EditorBuffer&);
+    EditorBuffer& operator=(const EditorBuffer&);
 
     void expandCapacity();
-
-    int cursor;
-    int length;
-    int capacity;
-    char *array;
 };
 
 #endif // EDITORBUFFER_ARRAY_H
