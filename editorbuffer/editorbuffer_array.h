@@ -34,8 +34,8 @@ private:
     int cursor;
 
     /* Make it illegal to copy the editor buffers */
-    EditorBuffer(const EditorBuffer&);
-    EditorBuffer& operator=(const EditorBuffer&);
+    EditorBuffer(const EditorBuffer& value) {}
+    EditorBuffer& operator=(const EditorBuffer& rhs) { return *this; }
 
     void expandCapacity();
 };
