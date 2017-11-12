@@ -1,4 +1,4 @@
-By first implementing common data structures and algorithms in C++, the ultimate goal is to write a mini C++ STL.
+By first implementing common data structures and algorithms in C++, the ultimate goal is to write a mini C++ STL.    
 Progress:
 + Containers:
     - vector
@@ -9,17 +9,17 @@ Progress:
     - map
     - set
 + Iterators:
-    -
+    - 
 + Algorithms
     - sorting
-    -
+    - 
 + Functionals
-    -
+    - 
 + Allocators
-    -
+    - 
 ***
 Reference:
 + [Programming Abstractions in C++](https://web.stanford.edu/class/archive/cs/cs106b/cs106b.1136/materials/CS106BX-Reader.pdf "Programming Abstractions in C++")
-+ [Accecerated C++](https://www.amazon.com/Accelerated-C-Practical-Programming-Example/dp/020170353X "Accecerated C++")
++ [Accelerated C++](https://www.amazon.com/Accelerated-C-Practical-Programming-Example/dp/020170353X "Accelerated C++")
 + [C++ Reference](http://en.cppreference.com/w/ "C++ Reference")
 
