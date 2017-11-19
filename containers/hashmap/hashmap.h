@@ -11,6 +11,7 @@
 #include <sstream>
 #include <string>
 #include "vector.h"
+#include "hashfunc.h"
 
 /* The below hashCode function is overloaded to support all
  * primitive types and the C++ string type
